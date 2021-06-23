@@ -11,6 +11,16 @@
 
 <script>
 export default ({
+    methods: {
+      addTask(){
+          let date = Date().split(' ').splice(1,4).join(' ')
+          let newTask = {title: this.newTaskTitle, text: this.newTaskText, date:date, done:false, editing:false}
+          this.newTaskTitle = ''
+          this.newTaskText = ''
+          console.log(newTask)
+        //   taskList.todoList.push(newTask)
+      }
+}
 })
 </script>
 
