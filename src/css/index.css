@@ -1,0 +1,92 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,300;1,200&display=swap');
+
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Montserrat', sans-serif;
+}
+
+h1,h2,h3,h4{
+}
+
+h1,h2{
+    margin-bottom: 30px;
+}
+
+.content-margins{
+    margin-top: 10vh;
+    max-width: 600px;
+    padding-inline: 20px;
+    margin-inline: auto;
+}
+
+textarea{
+    width: 100%;
+    resize: none;
+}
+
+#list .todo-el{
+    margin-bottom: 30px;
+}
+
+#list > div:last-child{
+    margin-bottom: 100px;
+}
+
+.taskTitle{
+    font-size: 24px;
+}
+
+textarea{
+    padding: 10px;
+}
+
+button{
+    padding: 5px;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    background-color: #191919;
+    color: white;
+}
+
+input:focus,textarea:focus{
+    outline: none;
+    background-color: blanchedalmond;
+}
+#add-task > input{
+    margin-bottom: 5px;
+}
+
+/* Task component */
+.todo-el,#add-task{
+    padding: 10px 10px;
+    border-radius: 5px;
+    border: 1px solid black;
+}
+
+.todo-el > .header{
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 5px;
+}
+.todo-el p.date{
+    color: grey;
+    font-weight: 200;
+    font-style: italic;
+}
+
+.todo-el > .button-wrapper{
+    display: flex;
+}
+.todo-el > .button-wrapper{
+    display: flex;
+    justify-content: flex-end;
+}
+.todo-el > .button-wrapper > button{
+    margin-left: 10px;
+}
+.finished{
+    background-color: #92FF8F;
+}
