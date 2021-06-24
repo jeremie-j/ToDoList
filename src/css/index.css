@@ -26,7 +26,7 @@ textarea{
     resize: none;
 }
 
-#list .todo-el{
+#list .task{
     margin-bottom: 30px;
 }
 
@@ -60,31 +60,31 @@ input:focus,textarea:focus{
 }
 
 /* Task component */
-.todo-el,#add-task{
+.task,#add-task{
     padding: 10px 10px;
     border-radius: 5px;
     border: 1px solid black;
 }
 
-.todo-el > .header{
+.task > .header{
     display: flex;
     justify-content: space-between;
     margin-bottom: 5px;
 }
-.todo-el p.date{
+.task p.date{
     color: grey;
     font-weight: 200;
     font-style: italic;
 }
 
-.todo-el > .button-wrapper{
+.task > .button-wrapper{
     display: flex;
 }
-.todo-el > .button-wrapper{
+.task > .button-wrapper{
     display: flex;
     justify-content: flex-end;
 }
-.todo-el > .button-wrapper > button{
+.task > .button-wrapper > button{
     margin-left: 10px;
 }
 .finished{

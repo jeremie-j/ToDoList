@@ -6,6 +6,8 @@
         <TaskDone v-else-if="task.done" :task="task" @undone="undone"></TaskDone>
         <DisplayTask v-else :task="task" @toggleUpdate="handleToggleUpdate" @finish="finish" @delete="remove"></DisplayTask>
       </div>
+      <h2>Add Task</h2>
+      <TaskEditing :taskEdited="taskEdited" @change="handleTaskChange" @sendUpdate="addTask"></TaskEditing>
     </div>
   </div>
 </template>
@@ -19,40 +21,37 @@ export default {
   name: 'App',
   data(){ return{
       taskEdited: {
-        title: '',
-        text: '',
       },
       todoList:[
-      {id:0,title: "Coucou", text: "Pourquoi pas finalement", date: "Jun 21 2021 17:04:42",done:false,editing:true},
-      {id:1,title: "Coucou", text: "Pourquoi pas finalement", date: "Jun 21 2021 17:04:42",done:false,editing:false},
-      {id:2,title: "Coucou", text: "Pourquoi pas finalement", date: "Jun 21 2021 17:04:42",done:false,editing:false}
+      {id:0,title: "Coucou", text: "Pourquoi pas finalement", date: "Jun 21 2021 17:04:42",done:false},
+      {id:1,title: "Coucou", text: "Pourquoi pas finalement", date: "Jun 21 2021 17:04:42",done:false},
+      {id:2,title: "Coucou", text: "Pourquoi pas finalement", date: "Jun 21 2021 17:04:42",done:false}
       ],
   }},
   components: {
     TaskEditing, DisplayTask,TaskDone
   },
   methods:{
-    sendUpdate(id){
-      let index = this.indexOfTask(id)
-      console.log(index)
-      this.todoList[index].title = "this.taskEdited.title"
-      this.todoList[index].text = "this.taskEdited.text"
-      this.todoList[index].editing = false
+    sendUpdate(){
+      let index = this.indexOfTask(this.taskEdited.id)
+      this.todoList[index] = this.taskEdited
+      this.taskEdited = {}
       },
     remove(arg){
       let id = arg
-      console.log(id)
       let index = this.indexOfTask(id)
       this.todoList.splice(index,1)
     },
     handleToggleUpdate(id){
-      this.taskEdited = { ...this.todoList[id] }
+      let index = this.indexOfTask(id)
+      this.taskEdited = { ...this.todoList[index] }
     },
     finish(arg){
       let id = arg
       let index = this.indexOfTask(id)
       this.todoList[index].done = true
-    },undone(arg){
+    },
+    undone(arg){
       let id = arg
       let index = this.indexOfTask(id)
       this.todoList[index].done = false
@@ -66,6 +65,15 @@ export default {
     },
     handleTaskChange(task) {
       this.taskEdited = task
+    },
+    addTask(){
+      let id = this.todoList.length >= 1 ? this.todoList[this.todoList.length - 1].id + 1 : 0
+      let title = this.taskEdited.title 
+      let text = this.taskEdited.text
+      let date = Date().split(' ').splice(1,4).join(' ')
+      let done = false
+      this.todoList.push({id:id,title: title, text: text, date:date, done:done})
+      this.taskEdited = {}
     }
   }
 }
